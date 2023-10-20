@@ -1,0 +1,44 @@
+def volume_solid(width, length, depth):
+    """
+    Returns the volume of water needed to fill a lock of these given dimensions. 
+    It is simply a box of these given dimensions.
+    """
+    return width * length * depth
+
+
+def water_needed_perlock(volume):
+    """
+    Returns the amount of water needed to fill a lock with the given volume for a full year.
+    Computes the total volume of water you need to fill a single lock 35 times a day for a full year (365 days).
+    """
+    ships_per_day = 35
+    total_water_per_year = volume * ships_per_day * 365
+    return total_water_per_year
+
+
+def main():
+    # Lock dimensions
+    width = 32
+    length = 320
+    depth = 10
+
+    # Total volume of water needed in the canal yearly
+    total_volume_canal = 2 * volume_solid(width, length, depth)
+    print(f"Panama canal statistics:\nThe total volume of water needed in Gatun lake: {total_volume_canal} m^3")
+
+    # Total amount of rain in the rainy season (in cubic meters)
+    daily_rain_needed = total_volume_canal / 600000 * 1  # Gatun lake conversion to 1 mm rain
+    total_rain_rainy_season = daily_rain_needed * 30 * 9
+    print(f"In rainy season, daily rain should be at least: {total_rain_rainy_season} m^3")
+
+    # Conversion to millimeters
+    millimeters_daily = total_rain_rainy_season * 1000
+    print(f"This means, it rains about {millimeters_daily} millimeters every day during the rainy season")
+
+    # Comparison with New York State
+    new_york_rain = 2.5
+    print(f"Comparison: New York State's average rain (or snow) per day is about {new_york_rain} millimeters")
+
+
+if __name__ == "__main__":
+    main()
